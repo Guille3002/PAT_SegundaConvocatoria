@@ -1,0 +1,42 @@
+}#include "Ejercicio03.h"
+//Constructor 
+MinStack::MinStack() : topNode(nullptr) {}
+//Agregando nuevo elemento a la pila
+void MinStack::push(int value) {
+    if (!topNode) {
+        //Si la pila se encuentra vacía, el nuevo nodo tendrá el mismo valor tanto como el mínimo
+        topNode = new StackNode{ value, value, nullptr };
+    }
+    else {
+        //Si la pila no se encuentra vacía, se agrega un nuevo nodo
+        topNode = new StackNode{ value, std::min(value, topNode->minValue), topNode };
+    }
+}
+//Eliminando el último elemento agregado a la pila
+void MinStack::pop() {
+    if (topNode) {
+        .
+        StackNode* temp = topNode;
+        topNode = topNode->next;
+        delete temp;
+    }
+}
+//Retorna el elemento último que se agregó a la pila sin borrarlo 
+int MinStack::top() {
+    if (topNode) {
+        
+        return topNode->value;
+    }
+    
+    return 0; 
+}
+//Rertorna el elemento menor en la pila
+int MinStack::getMin() {
+    if (topNode) {
+        
+        return topNode->minValue;
+    }
+    
+    return 0; 
+}
+
